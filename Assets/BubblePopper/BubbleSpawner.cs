@@ -37,6 +37,11 @@ public class BubbleSpawner : MonoBehaviour
     GameObject spawnBubble()
     {
         GameObject bubble = Instantiate(BubblePrefab, this.transform);
+        BubbleMovement bubbleMovement = bubble.GetComponent<BubbleMovement>();
+        bubbleMovement.bearing = Random.Range(0f, 360f);
+        bubbleMovement.speed = Random.Range(.5f, 2.5f);
+        bubbleMovement.startX = Random.Range(0f, Screen.width);
+        bubbleMovement.startY = Random.Range(0f, Screen.height);
         return bubble;
     }
 
