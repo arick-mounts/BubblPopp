@@ -28,23 +28,31 @@ public class BubbleSpawner : MonoBehaviour
             spawnTimer -= Time.deltaTime;
             if (spawnTimer  <= 0f)
             {
-                BubblesCurrent.Add(spawnBubble());
+                spawnBubble();
                 spawnTimer = interval;
             }
         }
     }
 
-    GameObject spawnBubble()
+    public void spawnBubble()
     {
         GameObject bubble = Instantiate(BubblePrefab, this.transform);
-        BubbleMovement bubbleMovement = bubble.GetComponent<BubbleMovement>();
-        bubbleMovement.bearing = Random.Range(0f, 360f);
-        bubbleMovement.speed = Random.Range(.5f, 2.5f);
-        bubbleMovement.startX = Random.Range(0f, Screen.width);
-        bubbleMovement.startY = Random.Range(0f, Screen.height);
-        return bubble;
+        BubbleControl bubbleC = bubble.GetComponent<BubbleControl>();
+
+        bubbleC.spawner = this;
+        bubbleC.bearing = Random.Range(0f, 360f);
+        bubbleC.speed = Random.Range(.05f, .75f);
+        bubbleC.startX = Random.Range(0f, Screen.width);
+        bubbleC.startY = Random.Range(0f, Screen.height);
+        addBubbleToList( bubble);
     }
 
-    
+    public void addBubbleToList(GameObject bubble) {
+        BubblesCurrent.Add(bubble);
+    }
+    public void removeBubbleFromList(GameObject bubble)
+    {
+        BubblesCurrent.Remove(bubble);
+    }
 }
 

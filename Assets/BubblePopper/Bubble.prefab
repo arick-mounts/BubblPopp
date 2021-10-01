@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4579447390283020189}
   - component: {fileID: 4579447390283020188}
   - component: {fileID: 4579447390283020191}
-  - component: {fileID: 1774605421}
+  - component: {fileID: 3899297000450560609}
   m_Layer: 0
   m_Name: Bubble
-  m_TagString: Untagged
+  m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1774605421
+--- !u!114 &3899297000450560609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,3 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8194fa7e957218499cae6809bc7b77e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementType: 0
+  speed: 0.05
+  bearing: 0
+  startX: 0
+  startY: 0
+  spawner: {fileID: 0}
