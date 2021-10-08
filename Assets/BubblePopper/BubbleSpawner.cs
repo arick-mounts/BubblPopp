@@ -37,6 +37,8 @@ public class BubbleSpawner : MonoBehaviour
     public void spawnBubble()
     {
         GameObject bubble = Instantiate(BubblePrefab, this.transform);
+        float scale = Random.Range(.15f, .3f);
+        bubble.transform.localScale = new Vector3(scale,scale, scale);
         BubbleControl bubbleC = bubble.GetComponent<BubbleControl>();
 
         bubbleC.spawner = this;
