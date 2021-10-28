@@ -13,6 +13,7 @@ public class BubbleControl : MonoBehaviour
     public BubbleSpawner spawner;
     private ParticleSystem particle;
     private MeshRenderer mesh;
+    private SphereCollider col;
     private bool popped = false;
     Vector2 screenPos;
     Vector2 direction = new Vector2(1.5f, 2f);
@@ -24,15 +25,25 @@ public class BubbleControl : MonoBehaviour
         screenPos = new Vector2(startX, startY);
         particle = this.GetComponent<ParticleSystem>();
         mesh = this.GetComponent<MeshRenderer>();
+        col = this.GetComponent<SphereCollider>();
     }
 
+
+
     // Update is called once per frame
-    void Update()
+
+    private void FixedUpdate()
     {
         Movement();
-        if (popped == false) {
-            Bounce(); 
+        if (popped == false)
+        {
+            Bounce();
         }
+    }
+
+    void Update()
+    {
+        
     }
 
     void Movement()
@@ -70,6 +81,7 @@ public class BubbleControl : MonoBehaviour
             popped = true;
             particle.Play();
             mesh.enabled = false;
+            col.enabled = false;
             popped = true;
             Invoke("endBubble", .5f);
         }

@@ -18,10 +18,11 @@ public class BubbleSpawner : MonoBehaviour
     {
         BubblesCurrent = new List<GameObject>();
         spawnTimer = interval;
-        Debug.Log("I'm alive in here");
     }
 
     // Update is called once per frame
+
+
     void Update()
     {
         if (BubblesCurrent.Count < maxBubbles) {

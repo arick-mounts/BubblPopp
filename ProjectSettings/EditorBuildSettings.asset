@@ -8,5 +8,8 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/BubblePopper/Scenes/Main.unity
+    guid: 0fda03f02d8b17d44831720f5af780da
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2b7cdbe7dd776fd4db95b1c3ff340207, type: 2}
