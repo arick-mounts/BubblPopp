@@ -22,6 +22,7 @@ public class TapPop : MonoBehaviour
 
     private void tapStart(Ray r, float time)
     {
+        //Debug.Log("I'm happening");
 
         RaycastHit hit;
         if (Physics.SphereCast(r.origin, .1f, r.direction, out hit, 100f)){

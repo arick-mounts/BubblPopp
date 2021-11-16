@@ -7,19 +7,21 @@ public class BackgroundSnap : MonoBehaviour
 {
 
     public RectTransform panel;
-    public RectTransform[] backgrounds;
+    public List<RectTransform> backgrounds;
     public RectTransform center;
+    public GameObject prefab;
 
     private float[] distance;
     private bool dragging = false;
-    private int backgroundDistance;
+    public int backgroundDistance;
     private int closestBackground;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        distance = new float[backgrounds.Length];
-
+        setDistance();
         backgroundDistance = (int)Mathf.Abs(backgrounds[1].anchoredPosition.x - backgrounds[0].anchoredPosition.x);
         
     }
@@ -27,7 +29,7 @@ public class BackgroundSnap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i<backgrounds.Length; i++)
+        for(int i = 0; i<backgrounds.Count; i++)
         {
             distance[i] = Mathf.Abs(center.transform.position.x - backgrounds[i].transform.position.x);
         }
@@ -37,7 +39,7 @@ public class BackgroundSnap : MonoBehaviour
 
         //print(Mathf.Min(distance));
 
-        for(int a = 0; a <backgrounds.Length; a++)
+        for(int a = 0; a <backgrounds.Count; a++)
 
         {
             if(minDistance == distance[a])
@@ -52,6 +54,13 @@ public class BackgroundSnap : MonoBehaviour
         }
         
     }
+
+    public void setDistance() 
+    {
+        distance = new float[backgrounds.Count];
+
+    }
+
 
     void LerpToBackground(int position)
     {
@@ -70,4 +79,6 @@ public class BackgroundSnap : MonoBehaviour
     {
         dragging = false;
     }
+
+    
 }
