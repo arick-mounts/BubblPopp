@@ -19,17 +19,22 @@ public class BackgroundSnap : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+
         setDistance();
         backgroundDistance = (int)Mathf.Abs(backgrounds[1].anchoredPosition.x - backgrounds[0].anchoredPosition.x);
+    }
+
+    void Start()
+    {
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i<backgrounds.Count; i++)
+        for (int i = 0; i < backgrounds.Count; i++)
         {
             distance[i] = Mathf.Abs(center.transform.position.x - backgrounds[i].transform.position.x);
         }
