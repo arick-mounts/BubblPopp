@@ -85,5 +85,30 @@ public class BackgroundSnap : MonoBehaviour
         dragging = false;
     }
 
-    
+
+    public void deleteBackground(RectTransform background) {
+        if (background != null)
+        {
+            backgrounds.Remove(background);
+            Destroy(background.gameObject);
+            adjustBackgrounds();
+        }
+    }
+
+    public void adjustBackgrounds()
+    {
+        int i = 0;
+        foreach (RectTransform g in backgrounds)
+        {
+            if (g.anchoredPosition.x != i * backgroundDistance)
+            {
+                g.anchoredPosition = new Vector3(i * backgroundDistance, 0, 0);
+            }
+
+
+            i++;
+        }
+
+    }
+
 }

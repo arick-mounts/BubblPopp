@@ -38,7 +38,7 @@ public class BackgroundSaving : MonoBehaviour
             //Debug.Log(i.Name);
             Texture2D tex =  ReadTextureFromFile(dirPath +"/" + i.Name);
             //Debug.Log(tex);
-            addBack.DisplayBackground(tex);
+            addBack.DisplayBackground(tex,int.Parse(i.Name));
             numTextures += 1;
         
         } 
@@ -82,5 +82,9 @@ public class BackgroundSaving : MonoBehaviour
         Debug.Log("Written to file");
     }
 
-
+    public void deleteTextureFile(int file)
+    {
+        string path = dirPath + "/" + file;
+        File.Delete(path);
+    }
 }
