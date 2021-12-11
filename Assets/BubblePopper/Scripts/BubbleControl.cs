@@ -18,7 +18,7 @@ public class BubbleControl : MonoBehaviour
     Vector2 screenPos;
     Vector2 direction = new Vector2(1.5f, 2f);
     Vector3 pos;
-    // Start is called before the first frame update
+
     void Start()
     {
         direction = new Vector2(Mathf.Cos(bearing), Mathf.Sin(bearing)).normalized;
@@ -29,8 +29,6 @@ public class BubbleControl : MonoBehaviour
     }
 
 
-
-    // Update is called once per frame
 
     private void FixedUpdate()
     {

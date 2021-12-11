@@ -11,10 +11,11 @@ public class BackgroundSnap : MonoBehaviour
     public RectTransform center;
     public GameObject prefab;
 
-    private float[] distance;
+    public float[] distance;
     private bool dragging = false;
     public int backgroundDistance;
-    private int closestBackground;
+    public int closestBackground;
+    public float minDistance;
 
 
 
@@ -40,7 +41,7 @@ public class BackgroundSnap : MonoBehaviour
         }
 
 
-        float minDistance = Mathf.Min(distance);
+        minDistance = Mathf.Min(distance);
 
         //print(Mathf.Min(distance));
 
@@ -60,6 +61,11 @@ public class BackgroundSnap : MonoBehaviour
         
     }
 
+    public float calcDist(RectTransform rect) {
+        return Mathf.Abs(center.transform.position.x - rect.transform.position.x);
+
+    } 
+
     public void setDistance() 
     {
         distance = new float[backgrounds.Count];
@@ -69,6 +75,7 @@ public class BackgroundSnap : MonoBehaviour
 
     void LerpToBackground(int position)
     {
+
         float newX = Mathf.Lerp(panel.anchoredPosition.x, position,Time.deltaTime * 15f);
         Vector2 newPosition = new Vector2(newX, panel.anchoredPosition.y);
 
@@ -89,8 +96,10 @@ public class BackgroundSnap : MonoBehaviour
     public void deleteBackground(RectTransform background) {
         if (background != null)
         {
+                        
             backgrounds.Remove(background);
             Destroy(background.gameObject);
+            setDistance();
             adjustBackgrounds();
         }
     }
@@ -108,6 +117,8 @@ public class BackgroundSnap : MonoBehaviour
 
             i++;
         }
+
+        
 
     }
 
